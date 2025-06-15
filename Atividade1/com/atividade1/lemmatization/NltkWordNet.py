@@ -49,7 +49,7 @@ class NltkWordNet:
         return sorted(words_probability, key=lambda w:-w[1])
 
     #Verb --> Noun
-    def nounize(self, word):
+    def nounify(self, word):
         return self.__lemmatize(word, wn.VERB, wn.NOUN)
 
     #Noun --> Verb
