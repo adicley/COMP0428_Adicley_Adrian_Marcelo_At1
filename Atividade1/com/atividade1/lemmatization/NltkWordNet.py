@@ -35,11 +35,11 @@ class NltkWordNet:
         derivationally_related_forms = [(l, l.derivationally_related_forms()) for l in word_lemmas[0]]
 
         #Das possiveis flexibilizacoes, filtra somente os que sao da classe gramatical informada em to_pos (adv, adj, noun ou verb);
-        filtered_noun_lemmas = [drf[1] for drf in derivationally_related_forms
+        filtered_to_pos = [drf[1] for drf in derivationally_related_forms
                                 for l in drf[1] if l.synset().name().split('.')[1] == to_pos][0]
         
-        #Retorna a lista de nomes vinculados a filtered_noun_lemmas;
-        words = [l.name() for l in filtered_noun_lemmas]
+        #Retorna a lista de nomes vinculados a filtered_to_pos;
+        words = [l.name() for l in filtered_to_pos]
         words_len = len(words)
 
         #Lista (word, frequency);
