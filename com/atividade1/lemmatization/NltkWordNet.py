@@ -5,7 +5,7 @@ class NltkWordNet:
         pass
 
     def __lemmatize(self, word, pos_word, to_pos):
-        """ 
+        """
             Retorna a lista de palavras da classe gramatical (adv, adj, verb, noun) passada em pos_word e que possuam o mesmo conceito
             (sejam sinonimos) da palavra (word) informada;
         """
@@ -15,7 +15,7 @@ class NltkWordNet:
         if not pos_list:
            return []
 
-        """ 
+        """
             Neste ponto, notamos uma redundancia no codigo recomendado pelo stack overflow, pois
             o autor do codigo faz uma filtragem de acordo com a classe gramatical informada, sendo
             que essa filtragem ja e feita pela funcao synsets quando este e passado no segundo parametro
@@ -23,11 +23,11 @@ class NltkWordNet:
 
             word_lemmas = [s.lemmas() for s in pos_list if s.name().split('.')[1] == pos_word]
         """
-        
+
         #Cria uma lista com os lemas das palavras listadas pela funcao synsets
         #(uma palavra pode ter um ou mais lemmas relacionados semanticamente);
         word_lemmas = [s.lemmas() for s in pos_list]
-        
+
         #Caso nao seja encontrado nenhum lemma associado a palavra, return [];
         if not word_lemmas:
            return []
@@ -38,7 +38,7 @@ class NltkWordNet:
         #Das possiveis flexibilizacoes, filtra somente os que sao da classe gramatical informada em to_pos (adv, adj, noun ou verb);
         filtered_to_pos = [drf[1] for drf in derivationally_related_forms
                                 for l in drf[1] if l.synset().name().split('.')[1] == to_pos][0]
-        
+
         #Retorna a lista de nomes vinculados a filtered_to_pos;
         words = [l.name() for l in filtered_to_pos]
         words_len = len(words)
