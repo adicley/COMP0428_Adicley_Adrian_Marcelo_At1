@@ -24,7 +24,8 @@ class NltkWordNet:
             word_lemmas = [s.lemmas() for s in pos_list if s.name().split('.')[1] == pos_word]
         """
         
-        #Cria uma lista com os lemas das palavras listadas pela funcao synsets (uma palavra pode ter um ou mais lemmas);
+        #Cria uma lista com os lemas das palavras listadas pela funcao synsets
+        #(uma palavra pode ter um ou mais lemmas relacionados semanticamente);
         word_lemmas = [s.lemmas() for s in pos_list]
         
         #Caso nao seja encontrado nenhum lemma associado a palavra, return [];
